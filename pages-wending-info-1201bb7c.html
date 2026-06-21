@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>问鼎娱乐 · 站点介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f2f7fa;
+      line-height: 1.6;
+      color: #1e2c3a;
+      padding: 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      width: 100%;
+      flex: 1;
+    }
+
+    /* 主视觉 — 克制叙述 */
+    .hero {
+      background: linear-gradient(145deg, #eaf5f2 0%, #d8ede8 100%);
+      border-radius: 2rem;
+      padding: 3.5rem 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 8px 24px rgba(34, 101, 88, 0.08);
+      border: 1px solid rgba(68, 156, 136, 0.12);
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #104c42;
+      margin-bottom: 0.8rem;
+      line-height: 1.2;
+    }
+
+    .hero h1 small {
+      display: block;
+      font-size: 0.5em;
+      font-weight: 400;
+      color: #2d6b61;
+      letter-spacing: 0.04em;
+      margin-top: 0.1rem;
+    }
+
+    .hero p {
+      max-width: 640px;
+      font-size: 1.1rem;
+      color: #2b5b53;
+      margin-top: 1.2rem;
+      line-height: 1.7;
+    }
+
+    .hero .badge-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      margin-top: 1.8rem;
+    }
+
+    .badge-grid span {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(2px);
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      color: #1c5b50;
+      border: 1px solid #bfddd3;
+    }
+
+    /* 网格卡片 — 蓝绿点缀 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.8rem;
+      margin: 2.5rem 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 4px 14px rgba(0, 30, 20, 0.04);
+      border: 1px solid #e3f0eb;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(44, 128, 112, 0.08);
+      border-color: #a2d0c2;
+    }
+
+    .card .icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: #127a68;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0d4d41;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #3a5c54;
+      flex: 1;
+    }
+
+    .card .tag {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.8rem;
+      background: #d9efe8;
+      border-radius: 40px;
+      color: #106551;
+      width: fit-content;
+    }
+
+    /* 适合人群 整块卡片 */
+    .audience-section {
+      background: white;
+      border-radius: 1.8rem;
+      padding: 2.2rem 2rem;
+      margin: 2.5rem 0;
+      border: 1px solid #d5e7e0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .audience-section h2 {
+      font-size: 1.5rem;
+      color: #0c493e;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.01em;
+    }
+
+    .audience-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    .audience-item {
+      background: #eef7f4;
+      border-radius: 2rem;
+      padding: 0.6rem 1.5rem;
+      font-size: 0.95rem;
+      color: #1a5f52;
+      border: 1px solid #c2ddd2;
+    }
+
+    /* 自然链接段落 */
+    .link-paragraph {
+      background: #e4f2ed;
+      border-radius: 1.5rem;
+      padding: 2rem 2.2rem;
+      margin: 2.8rem 0;
+      border-left: 4px solid #1f8771;
+      font-size: 1.05rem;
+      color: #183f38;
+    }
+
+    .link-paragraph a {
+      color: #045d4b;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1.5px solid #8fcab8;
+      transition: border-color 0.15s;
+    }
+
+    .link-paragraph a:hover {
+      border-bottom-color: #045d4b;
+    }
+
+    /* FAQ 摘要 — 简洁 */
+    .faq-taste {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.8rem 2rem;
+      margin: 2rem 0;
+      border: 1px solid #d5e3dd;
+    }
+
+    .faq-taste h2 {
+      font-size: 1.25rem;
+      color: #0b4c3f;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+
+    .faq-taste details {
+      margin-bottom: 0.8rem;
+      border-bottom: 1px solid #dcebe5;
+      padding-bottom: 0.6rem;
+    }
+
+    .faq-taste details summary {
+      cursor: pointer;
+      font-weight: 500;
+      color: #1e574b;
+      padding: 0.3rem 0;
+    }
+
+    .faq-taste details p {
+      color: #2b5a4f;
+      margin-top: 0.4rem;
+      font-size: 0.95rem;
+      padding-left: 0.4rem;
+    }
+
+    /* 页脚 */
+    .footer-note {
+      margin-top: 3rem;
+      padding: 1.2rem 0;
+      border-top: 1px solid #cde0d8;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      font-size: 0.85rem;
+      color: #3f6a60;
+    }
+
+    .footer-note a {
+      color: #0d5f4e;
+      text-decoration: none;
+      border-bottom: 1px dotted #8ebfaf;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+
+      .hero {
+        padding: 2rem 1.5rem;
+      }
+
+      .card-grid {
+        gap: 1rem;
+      }
+
+      .audience-section,
+      .link-paragraph,
+      .faq-taste {
+        padding: 1.5rem 1.2rem;
+      }
+
+      .footer-note {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- 主视觉：站点介绍与可信说明 -->
+    <div class="hero">
+      <h1>
+        问鼎娱乐
+        <small>一个稳定的信息与内容索引站点</small>
+      </h1>
+      <p>
+        这个站点提供了一些经过整理的数字化服务入口和实用信息，没有复杂的构造，也没有夸大的承诺。它更像一块安静的展板——把少数几件值得了解的事，放在你看得见的位置。
+      </p>
+      <div class="badge-grid">
+        <span>✓ 长期维护</span>
+        <span>✓ 简洁结构</span>
+        <span>✓ 内容导向</span>
+        <span>✓ 轻量界面</span>
+      </div>
+    </div>
+
+    <!-- 用途卡片 — 网格形式，蓝绿点缀 -->
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon">📋</div>
+        <h3>服务索引</h3>
+        <p>聚合了若干常用链接与说明，帮助你快速了解平台提供的功能方向，减少寻找成本。</p>
+        <span class="tag">归整</span>
+      </div>
+      <div class="card">
+        <div class="icon">🔍</div>
+        <h3>信息参考</h3>
+        <p>提供关于平台规则、使用环境以及常见问题的简洁描述，适合初次接触时通读。</p>
+        <span class="tag">参考</span>
+      </div>
+      <div class="card">
+        <div class="icon">🧩</div>
+        <h3>模块导览</h3>
+        <p>不同的功能区域以卡片形式展示，每个模块都对应一个明确的用途，没有冗余装饰。</p>
+        <span class="tag">导览</span>
+      </div>
+    </div>
+
+    <!-- 适合人群 — 用另一种卡片样式 -->
+    <div class="audience-section">
+      <h2>哪些人可能会觉得这个站点有用</h2>
+      <div class="audience-flex">
+        <span class="audience-item">想要了解平台底层逻辑的普通用户</span>
+        <span class="audience-item">偏好极简信息架构的浏览者</span>
+        <span class="audience-item">需要一份可靠入口索引的使用者</span>
+        <span class="audience-item">对蓝绿色系界面有好感的访客</span>
+        <span class="audience-item">寻找非诱导式内容体验的人</span>
+      </div>
+      <p style="margin-top: 1.4rem; color: #1c5649; font-size: 0.95rem; border-left: 3px solid #20917b; padding-left: 1rem;">
+        这里不追逐热点，也不制造焦虑，只是把信息本身还给你。
+      </p>
+    </div>
+
+    <!-- 自然链接段落：嵌入问鼎娱乐，无诱导词汇 -->
+    <div class="link-paragraph">
+      <p>
+        如果你之前听说过或使用过 <a href="https://pages-wending.com">问鼎娱乐</a>，会发现这个页面延续了它一贯的克制风格——没有夸张的动效，没有无意义的弹窗，也没有隐藏的跳转陷阱。整个站点更像一个安静的前台，你来了，看到内容，然后自己做决定。
+      </p>
+    </div>
+
+    <!-- FAQ 摘要 — 简洁但体现差异化 -->
+    <div class="faq-taste">
+      <h2>你可能想问的（简短版）</h2>
+      <details>
+        <summary>这个站点主要做什么？</summary>
+        <p>它汇集了问鼎娱乐相关的索引与说明，帮助你快速了解平台的服务轮廓。所有内容均经过整理，保持中性可靠。</p>
+      </details>
+      <details>
+        <summary>内容更新频率如何？</summary>
+        <p>站点内容会随着服务调整而更新，但不会频繁变动。核心说明保持长期稳定，只修正必要的细节。</p>
+      </details>
+      <details>
+        <summary>是否需要注册才能浏览？</summary>
+        <p>不需要。整个页面完全开放，你可以随时浏览所有内容，没有登录要求或信息收集。</p>
+      </details>
+      <details style="border-bottom: none;">
+        <summary>链接安全吗？</summary>
+        <p>所有链接都直接指向 <a href="https://pages-wending.com" style="color: #045d4b; text-decoration: underline; text-underline-offset: 3px;">问鼎娱乐</a> 相关页面，采用 https 协议，不经过第三方中间页。</p>
+      </details>
+    </div>
+
+    <!-- 页脚区域 -->
+    <div class="footer-note">
+      <span>© · pages-wending</span>
+      <span>内容索引 · 版本信息卡片</span>
+      <span><a href="https://pages-wending.com">问鼎娱乐</a> · 直接链接</span>
+    </div>
+
+  </div>
+</body>
+</html>
