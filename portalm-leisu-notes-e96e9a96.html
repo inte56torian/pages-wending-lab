@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>雷速 · 轻量导航介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f9fafb;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: #1f2937;
+      line-height: 1.7;
+      padding: 0 1.5rem;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 0 3.5rem;
+    }
+
+    /* 顶部导航 */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0 1.5rem;
+      border-bottom: 1px solid #e5e7eb;
+      margin-bottom: 3rem;
+    }
+
+    .nav-brand {
+      font-weight: 600;
+      font-size: 1.2rem;
+      letter-spacing: 0.02em;
+      color: #111827;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      color: #4b5563;
+      transition: color 0.2s;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a:hover {
+      color: #111827;
+      border-bottom-color: #9ca3af;
+    }
+
+    /* hero 区 */
+    .hero {
+      margin-bottom: 3.5rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: #111827;
+      margin-bottom: 1rem;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: #4b5563;
+      max-width: 600px;
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-meta {
+      font-size: 0.9rem;
+      color: #6b7280;
+      letter-spacing: 0.01em;
+      margin-top: 1rem;
+    }
+
+    /* 介绍段落 */
+    .intro-block {
+      margin-bottom: 2.8rem;
+    }
+
+    .intro-block p {
+      margin-bottom: 1.2rem;
+      font-size: 0.98rem;
+    }
+
+    .intro-block strong {
+      font-weight: 500;
+      color: #111827;
+    }
+
+    .inline-link {
+      color: #1f2937;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: #d1d5db;
+      transition: text-decoration-color 0.2s;
+    }
+
+    .inline-link:hover {
+      text-decoration-color: #1f2937;
+    }
+
+    /* 场景卡片 */
+    .scenes {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin: 2.8rem 0;
+    }
+
+    .scene-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.4rem 1.6rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      border: 1px solid #f0f1f3;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .scene-card:hover {
+      border-color: #e2e5ea;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .scene-card h3 {
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #111827;
+    }
+
+    .scene-card p {
+      font-size: 0.93rem;
+      color: #4b5563;
+      line-height: 1.6;
+    }
+
+    /* 常见说明 (FAQ 风格) */
+    .faq-section {
+      margin-top: 3rem;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 2.2rem;
+    }
+
+    .faq-section h2 {
+      font-weight: 500;
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: #111827;
+    }
+
+    .faq-item {
+      margin-bottom: 1.25rem;
+    }
+
+    .faq-item .q {
+      font-weight: 500;
+      font-size: 0.98rem;
+      color: #1f2937;
+      margin-bottom: 0.3rem;
+    }
+
+    .faq-item .a {
+      font-size: 0.93rem;
+      color: #5b6573;
+      padding-left: 0.2rem;
+    }
+
+    .faq-divider {
+      height: 1px;
+      background: #f0f0f2;
+      margin: 1rem 0;
+    }
+
+    /* 脚注 */
+    .footer-note {
+      margin-top: 3.5rem;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      border-top: 1px solid #edf0f2;
+      padding-top: 1.5rem;
+      text-align: left;
+      letter-spacing: 0.01em;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      body {
+        padding: 0 1rem;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+        padding-bottom: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .nav-links {
+        gap: 1.2rem;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .scene-card {
+        padding: 1.1rem 1.2rem;
+      }
+
+      .faq-section h2 {
+        font-size: 1.15rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- 导航 -->
+    <nav class="nav">
+      <span class="nav-brand">雷速</span>
+      <ul class="nav-links">
+        <li><a href="#intro">介绍</a></li>
+        <li><a href="#scenes">场景</a></li>
+        <li><a href="#faq">说明</a></li>
+      </ul>
+    </nav>
+
+    <!-- hero -->
+    <div class="hero">
+      <h1>一个轻量的信息站点</h1>
+      <p class="hero-desc">
+        这里没有复杂的包装，只有关于站点本身的简明介绍。
+      </p>
+      <p class="hero-meta">
+        指向清晰 · 叙述直白
+      </p>
+    </div>
+
+    <!-- 介绍 -->
+    <div class="intro-block" id="intro">
+      <p>
+        <strong>雷速</strong> 是一个以信息汇聚和导航为主的站点。它并不追求大而全，而是在有限的篇幅内，提供经过筛选的内容结构。从最初的设计思路来看，站点的核心逻辑是：让访问者能够快速理解这个平台提供什么，以及它适合哪些场景。整个页面采用极简的布局，不堆砌元素，把注意力放在文字和功能入口上。
+      </p>
+      <p>
+        如果你对这类轻量级信息站点感兴趣，可以花几分钟浏览下面的场景模块和常见说明。它们从不同侧面描述了站点的定位与使用方式。需要特别说明的是，站点的所有内容均基于公开信息整理，不包含任何主观推荐或诱导行为。
+      </p>
+      <p>
+        你可以在任何需要的时候，直接通过 <a href="https://portalm-leisu.com" class="inline-link">雷速</a> 了解详细内容。这个链接指向站点的主页，所有核心信息都在那里以同样的克制风格呈现。
+      </p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes" id="scenes">
+      <div class="scene-card">
+        <h3>信息浏览与筛选</h3>
+        <p>
+          当你只是想快速了解某个主题的概览，而不想在大量广告或复杂界面中消耗时间时，这种轻量导航式的结构就很有用。它把内容组织成清晰的段落，你只需要滑动或点击就能获取要点。
+        </p>
+      </div>
+
+      <div class="scene-card">
+        <h3>日常参考与对比</h3>
+        <p>
+          不需要频繁切换页面，也不需要记住多个网址。站点把常见的几类信息放在同一框架下，方便你在需要时做简单对比或回顾。对于习惯直接阅读文本的人来说，这是一种低干扰的体验。
+        </p>
+      </div>
+
+      <div class="scene-card">
+        <h3>移动端快速查阅</h3>
+        <p>
+          窄正文宽度和卡片式设计让手机上的阅读变得轻松。没有弹窗和复杂的多栏布局，只需上下滑动即可浏览全部内容。这也是为什么页面在响应式上做了很多留白和间距的考虑。
+        </p>
+      </div>
+    </div>
+
+    <!-- 常见说明 -->
+    <div class="faq-section" id="faq">
+      <h2>常见说明</h2>
+
+      <div class="faq-item">
+        <div class="q">— 这个站点是做什么的？</div>
+        <div class="a">
+          它是一个以信息导航和介绍为主的页面，内容围绕站点本身的功能和适用场景展开，不涉及第三方服务或推广链接。
+        </div>
+      </div>
+
+      <div class="faq-divider"></div>
+
+      <div class="faq-item">
+        <div class="q">— 内容会频繁更新吗？</div>
+        <div class="a">
+          站点的更新频率不高，因为它的定位是提供相对稳定的概述信息。如果有重要变化，首页会做对应的调整，但不会以推送或弹窗的方式通知。
+        </div>
+      </div>
+
+      <div class="faq-divider"></div>
+
+      <div class="faq-item">
+        <div class="q">— 信息可靠吗？</div>
+        <div class="a">
+          所有内容均基于可查证的公开资料整理，不包含主观臆断或未经核实的断言。你可以把这里当作一个起点，再根据自己的判断做进一步了解。
+        </div>
+      </div>
+
+      <div class="faq-divider"></div>
+
+      <div class="faq-item">
+        <div class="q">— 和导航页有什么区别？</div>
+        <div class="a">
+          导航页通常只提供链接列表，而这个页面在提供链接的同时，也用平实的语言解释了每个部分的用途和背景，让访问者在不跳转的情况下就能获得上下文。
+        </div>
+      </div>
+    </div>
+
+    <!-- 脚注 -->
+    <div class="footer-note">
+      © 雷速 · 仅作信息展示
+    </div>
+  </div>
+</body>
+</html>
